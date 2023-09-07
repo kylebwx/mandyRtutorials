@@ -1,0 +1,162 @@
+---
+title: "09-05 In-class Work - Student"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Simulating coin tosses
+
+**Students**: 
+- Work alongside the instructor. 
+
+- Complete instructions in **bold** yourself.
+
+- Submit the notebook on Canvas.
+
+---
+
+# Probability through simulations
+
+One of the way to understand probability of an event occurring (for example, probability of getting $k$ heads on $n$ throws) is to **run simulations**.
+Then probability of an event can be seen as the proportion/percentage of times that the event occurs in simulations.
+
+Let's simulate coin tosses in R and see if the results of the simulations agree with our computations.
+**Tip**: You can always run `?function`, for example `?sample`, in a cell to see what a particular function does and what parameters it takes
+
+```{r coin}
+coin <- c("H", "T")
+```
+
+Simulate 10 coin tosses using `sample()`:
+
+```{r sample}
+
+```
+
+Find the number of heads:
+
+```{r heads}
+
+```
+
+This is just one simulation. Let's repeat sampling 1000 times:
+
+```{r replicate}
+
+```
+
+
+If we just care about number of heads, this isn't very convenient or efficient.
+Create a function to compute the number of heads in a sample coin toss, and **then** run it 1000 times
+
+
+```{r simulate}
+
+```
+
+
+Let's make number of tosses and number of replications into variables so we could compute other quantities for the same scenario.
+Let's also store the results of the simulations.
+
+```{r vars}
+
+```
+
+Let's look at how many times we got 2, 30, etc heads:
+
+```{r num_heads}
+
+```
+
+# Visualizing the distribution of head counts
+
+Let's look at the results for all # of heads at once using a histogram:
+
+```{r hist}
+
+```
+
+Default binning sometimes results in bins that don't contain any integer values (for example, `[23.25, 23.75]`), which results in gaps in the histogram because all the values in the data we're plotting (number of heads) are integer. Change `binwidth` to 1 to ensure that every bin contains exactly 1 integer.
+ 
+ 
+# Simulated vs theoretical probability
+
+**Student: Compute the proportion of simulated tosses with exactly 30 heads**
+
+```{r prop_30}
+
+```
+
+**Student: Use `choose(n,k)` to compute the theoretical probability of getting exactly 30 heads**
+
+```{r theor_30}
+
+```
+
+These numbers are pretty close to each other!
+
+# "At least"
+
+Let's look at all the tosses with at least 30 heads
+
+```{r}
+
+```
+
+
+**Student: Compute the proportion of simulated tosses with AT LEAST 30 heads**
+
+```{r}
+
+```
+
+**Student: Compute the theoretical probability of getting AT LEAST 30 heads**
+
+```{r}
+
+```
+
+# Unfair coin
+
+Let's simulate an "unfair coin", where the probability of heads is 1/4 instead of 1/2
+
+**Student: Use the `prob` parameter in `sample()` and modify the code to simulate coin tosses with probability of heads 1/4. Plot the histogram of the result.**
+
+```{r}
+
+```
+
+To really see what happens, let's adjust the x axis so that it's from 0 to 50:
+
+```{r}
+
+```
+
+The entire distribution moved to the left -- it's no longer centered around 25.
+
+Let's plot results of the two simulations side by side
+
+```{r}
+
+```  
+
+Not only the distribution shifts to the left, but it also becomes "skinnier" (has less variance). We will return to this when studying the binomial distribution later..
+
+# Conditional probability
+
+**Let's get back to a fair coin. Simulate the conditional probability of having _exactly 2_ heads in 10 fair coin tosses, given that there has _at least one head_.**
+
+*Hint*: first, do the simulations as before; then, restrict the sample space 
+
+```{r}
+
+```
+
+**Compute the theoretical probability of having exactly 2 heads in 10 fair coin tosses, given that there has at least one head.**
+
+```{r}
+
+```
